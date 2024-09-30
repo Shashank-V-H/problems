@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
   /* =========== Using strings =========== */
   cout << "\n"
-       << "wiht spaces using strings: ";
+       << "with spaces using strings: ";
   string str;
   i = 0;
   getline(cin, str);
