@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
                      //
   std::cout << name.erase(0, 5)
             << "\n"; // erase method to erase the characters in string by
-                     // specifying the starting and ending (not inclusive) index
+                     // specifying the starting and ending(not inclusive) index
   name.clear();      // clear method
   std::cout << "after clearing the name: " << name;
 
