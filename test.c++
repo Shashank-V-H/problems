@@ -1,77 +1,51 @@
 #include "iostream"
-#include <algorithm>
-#include <string>
 using namespace std;
 
-bool isAnagram(std::string, std::string);
-
 int main(int argc, char *argv[]) {
-  // Idea got from comment
-  string str1, str2;
-  std::getline(cin, str1);
-  std::getline(cin, str2);
-
-  std::sort(str1.begin(), str1.end());
-  std::sort(str2.begin(), str2.end());
-  if (str1 == str2) {
-    cout << "It's anagram";
-  } else {
-    cout << "It's not";
+  int n, k;
+  cout << "enter n: ";
+  cin >> n;
+  int a[n];
+  cout << "enter k: ";
+  cin >> k;
+  int x[k + 1];
+  cout << "enter array vlues: ";
+  for (int i = 0; i < n; i++) {
+    cin >> a[i];
   }
-  //
-  // The Idea i built
-  isAnagram(str1, str2);
+
+  for (int i = 0; i < k + 1; i++) {
+    x[i] = a[i];
+  }
+
+  cout << "================";
+  for (int i = 0; i < k + 1; i++) {
+    cout << x[i];
+  }
+  cout << endl;
+  for (int i = 0; i < k + 1; i++) {
+    for (int i = 0; i < n; i++) {
+      cout << a[i];
+    }
+    cout << endl;
+
+    for (int j = 0; j < n - 1; j++) {
+      a[j] = a[j + 1];
+    }
+
+    for (int i = 0; i < n; i++) {
+      cout << a[i];
+    }
+    cout << endl;
+  }
+  int j = 0;
+  for (int i = (n - k) - 1; i < n; i++) {
+    a[i] = x[j];
+    j++;
+  }
+
+  for (int i = 0; i < n; i++) {
+    cout << a[i];
+  }
+  return 0;
 }
-
-bool isAnagram(string s, string t) {
-  int i = 0;
-  if (s.length() != t.length()) {
-    cout << 0 << endl;
-  } else {
-    while (i == 0) {
-      for (int j = 0; j < t.length() + 1; j++) {
-        if (s.length() == 0 && t.length() == 0) {
-          cout << "true";
-          return true;
-
-        } else if (s[i] == t[j]) {
-          t.erase(j, 1);
-          s.erase(i, 1);
-          // cout << "str1:" << s << endl << "str2: " << t << endl;
-        }
-      }
-    }
-    if (s.length() != 0 && t.length() != 0) {
-      cout << "false";
-      return false;
-    }
-  }
-  cout << "false";
-  return false;
-}
-
-class Solution {
-
-public:
-  bool isAnagram(string s, string t) {
-
-    if (s.length() != t.length())
-
-      return false;
-
-    std::sort(s.begin(), s.end());
-
-    std::sort(t.begin(), t.end());
-
-    if (s == t) {
-
-      return true;
-
-    } else {
-
-      return false;
-    }
-
-    return false;
-  }
-};
