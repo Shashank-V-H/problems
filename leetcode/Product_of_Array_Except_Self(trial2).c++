@@ -31,7 +31,7 @@ public:
         reverse(nums.begin(), nums.end());
         return nums;
       }
-    } else if (array_full_zero >= nums.size() / 2) {
+    } else if (array_full_zero > nums.size() / 2) {
       for (int i = 0; i < nums.size(); i++)
         answer.emplace_back(0);
       return answer;
