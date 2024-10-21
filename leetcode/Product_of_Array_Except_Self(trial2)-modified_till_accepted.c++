@@ -17,6 +17,11 @@ public:
     int product = 1;
     int zero_exist = 0;
     int array_full_zero = 0;
+    int half;
+    if (nums.size() % 2 == 0)
+      half = nums.size() / 2;
+    else
+      half = nums.size() / 2 + 1;
 
     for (int i = 0; i < nums.size(); i++) {
       if (nums[i] == 0) {
@@ -31,13 +36,11 @@ public:
         reverse(nums.begin(), nums.end());
         return nums;
       }
-    } else if (array_full_zero > nums.size() / 2) {
+    } else if (array_full_zero >= half) {
       for (int i = 0; i < nums.size(); i++)
         answer.emplace_back(0);
       return answer;
-    }
-
-    // to calculate the product
+    } // to calculate the product
     for (int i = 0; i < nums.size(); i++) {
       if (nums[i] == 0) {
         // goto (we'll come to goto condition later)
@@ -56,19 +59,28 @@ public:
     }
 
     if (zero_exist) {
-      int j = 0;
-      for (int i = 0; i < nums.size(); i++) {
-        if (nums[i] == 0) {
-          zero_track.emplace_back(i);
+      if (array_full_zero > 1) {
+        for (int i = 0; i < nums.size(); i++) {
+          answer.emplace_back(0);
         }
+        return answer;
       }
 
-      for (int i = 0; i < nums.size(); i++) {
-        answer.emplace_back(0);
-      }
+      else {
+        int j = 0;
+        for (int i = 0; i < nums.size(); i++) {
+          if (nums[i] == 0) {
+            zero_track.emplace_back(i);
+          }
+        }
 
-      for (int i = 0; i < zero_track.size(); i++) {
-        answer[zero_track[i]] = product;
+        for (int i = 0; i < nums.size(); i++) {
+          answer.emplace_back(0);
+        }
+
+        for (int i = 0; i < zero_track.size(); i++) {
+          answer[zero_track[i]] = product;
+        }
       }
 
     } else {
@@ -99,6 +111,7 @@ int main() {
   std::vector<int> nums1 = {2, 0, 11, 15};
   std::vector<int> nums2 = {0, 4, 0};
   std::vector<int> nums3 = {1, 0};
+  std::vector<int> nums4 = {2, 2, 0, 2, 2, 0, 0, 2, 2};
 
   print(nums2);
 
@@ -116,6 +129,10 @@ int main() {
 
   vector<int> ans3 = solution.twoSum(nums3);
   print(ans3);
+
+  vector<int> ans4 = solution.twoSum(nums4);
+  print(ans4);
+
   cout << endl;
   return 0;
 }
