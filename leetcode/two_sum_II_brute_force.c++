@@ -1,18 +1,20 @@
+
+
 #include <iostream>
 #include <vector>
 using namespace std;
 class Solution {
 public:
-  vector<int> twoSum(vector<int> &nums, int target) {
-    int n = nums.size();
+  vector<int> twoSum(vector<int> &numbers, int target) {
+    int n = numbers.size();
     vector<int> ans;
     for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
-        if (i == j)
-          continue;
-        if (nums[i] + nums[j] == target) {
-          ans = {i, j};
-          break;
+      for (int j = i + 1; j < n; j++) {
+        // if (i == j)
+        //     continue;
+        if (numbers[i] + numbers[j] == target) {
+          ans = {i + 1, j + 1};
+          return ans;
         }
       }
     }

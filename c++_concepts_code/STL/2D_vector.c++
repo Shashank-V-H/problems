@@ -20,5 +20,6 @@ int main() {
     cout << word << " "; // Print each string
     cout << endl;        // Move to the next line for each group
   }
+
   return 0;
 }

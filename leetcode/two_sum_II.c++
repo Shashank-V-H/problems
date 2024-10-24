@@ -1,21 +1,23 @@
+
 #include <iostream>
 #include <vector>
 using namespace std;
 class Solution {
 public:
-  vector<int> twoSum(vector<int> &nums, int target) {
-    int n = nums.size();
+  vector<int> twoSum(vector<int> &numbers, int target) {
+    int n = numbers.size();
     vector<int> ans;
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
-        if (i == j)
-          continue;
-        if (nums[i] + nums[j] == target) {
-          ans = {i, j};
-          break;
-        }
-      }
+    int sol, left = 0, right = numbers.size() - 1;
+    while (left != right) {
+      sol = numbers[left] + numbers[right];
+      if (sol == target) {
+        return {left + 1, right + 1};
+      } else if (sol < target) {
+        left++;
+      } else
+        right--;
     }
+
     return ans;
   }
 };
