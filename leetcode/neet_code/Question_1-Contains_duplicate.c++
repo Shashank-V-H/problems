@@ -1,4 +1,23 @@
+// in codeforces format
+//
+//
+//
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
+public:
+  bool containsDuplicate(vector<int> &nums) {
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < nums.size() - 1; i++) {
+      if (nums[i] == nums[i + 1])
+        return true;
+    }
+    return false;
+  }
+};
+
+class Solution2 {
 public:
   bool containsDuplicate(vector<int> &nums) {
     bool flag = false;
@@ -13,7 +32,7 @@ public:
 };
 
 // Shorted Approach
-class Solution {
+class Solution3 {
 public:
   bool containsDuplicate(vector<int> &nums) {
     sort(nums.begin(), nums.end());
@@ -27,7 +46,7 @@ public:
 };
 
 // Set Approach
-class Solution {
+class Solution4 {
 public:
   bool containsDuplicate(vector<int> &nums) {
     return nums.size() > set<int>(nums.begin(), nums.end()).size();
@@ -35,7 +54,7 @@ public:
 };
 
 // Map
-class Solution {
+class Solution5 {
 public:
   bool containsDuplicate(vector<int> &nums) {
     map<int, int> mp;
@@ -51,7 +70,7 @@ public:
 };
 
 // Hash Map
-class Solution {
+class Solution6 {
 public:
   bool containsDuplicate(vector<int> &nums) {
     unordered_map<int, int> mp;
@@ -65,3 +84,29 @@ public:
     return flag;
   }
 };
+
+int main() {
+  int t;
+  cin >> t;
+
+  Solution sol;
+
+  while (t--) {
+    vector<int> arr;
+    int x;
+
+    while (cin >> x) {
+      arr.push_back(x);
+      if (cin.peek() == '\n')
+        break;
+    }
+
+    if (sol.containsDuplicate(arr)) {
+      cout << "contains duplicates" << endl;
+    } else {
+      cout << "doesn't contain duplicates" << endl;
+    }
+  }
+
+  return 0;
+}
