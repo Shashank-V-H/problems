@@ -1,0 +1,9 @@
+4
+"anagram"
+"nagaram"
+"rat"
+"car"
+"eat"
+"tae"
+"Bat"
+"taB"
