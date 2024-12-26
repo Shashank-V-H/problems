@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Sorting
+// Simple approach
 class Solution {
 public:
   bool isAnagram(string s, string t) {
@@ -18,40 +18,20 @@ public:
   }
 };
 
-// Hash Table
+// Simple approach
 class Solution1 {
 public:
   bool isAnagram(string s, string t) {
     if (s.length() != t.length()) {
       return false;
     }
-
-    unordered_map<char, int> countS;
-    unordered_map<char, int> countT;
-    for (int i = 0; i < s.length(); i++) {
-      countS[s[i]]++;
-      countT[t[i]]++;
+    unordered_map<char, int> charCount;
+    for (char c : s) {
+      charCount[c]++;
     }
-    return countS == countT;
-  }
-};
-
-// Hash Table (Optimal)
-class Solution2 {
-public:
-  bool isAnagram(string s, string t) {
-    if (s.length() != t.length()) {
-      return false;
-    }
-
-    vector<int> count(26, 0);
-    for (int i = 0; i < s.length(); i++) {
-      count[s[i] - 'a']++;
-      count[t[i] - 'a']--;
-    }
-
-    for (int val : count) {
-      if (val != 0) {
+    for (char c : t) {
+      charCount[c]--;
+      if (charCount[c] < 0) {
         return false;
       }
     }
@@ -64,8 +44,6 @@ int main() {
   cin >> t;
 
   Solution sol;
-  /*Solution1 sol;*/
-  /*Solution2 sol;*/
 
   while (t--) {
     string str1, str2;
