@@ -1,3 +1,5 @@
+// Encoded: 5,5,10,#HelloWorldCodeforces
+// Decoded: Hello World Codeforces
 #include <iostream>
 #include <string>
 #include <vector>
